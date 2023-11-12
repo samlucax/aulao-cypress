@@ -37,9 +37,9 @@ steps:
 - task: CopyFiles@2
   displayName: "Copiando artefatos do relatório para área de staging"
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
+    SourceFolder: '$(Build.SourcesDirectory)/cypress/reports/html'
     Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/cypress/reports/html'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/reports'
   condition: succeededOrFailed()
 
 - task: PublishBuildArtifacts@1
