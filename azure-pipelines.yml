@@ -38,7 +38,7 @@ steps:
   displayName: "Copiando artefatos do relatório para área de staging"
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: 'index.html'
+    Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/cypress/reports/html'
   condition: succeededOrFailed()
 
