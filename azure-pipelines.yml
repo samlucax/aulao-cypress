@@ -34,4 +34,19 @@ steps:
   condition: succeededOrFailed()
   continueOnError: true
 
+- task: CopyFiles@2
+  displayName: "Copiando artefatos do relatório para área de staging"
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: 'index.html'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/cypress/reports/html'
+  condition: succeededOrFailed()
+
+- task: PublishBuildArtifacts@1
+  displayName: "Publicando artefatos"
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+  condition: succeededOrFailed()
 
